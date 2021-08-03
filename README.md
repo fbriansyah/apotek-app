@@ -1,61 +1,34 @@
-# Tailwind / Svelte Demo integration
+# Apotek App
 
-Hi! This is a quick repo demonstration that shows how to quickly and painlessly integrate Tailwind into the Svelte pipeline, no additional scripts required! The main concept is that you'll need to leverage the postcss plugins that Tailwind uses directly, instead of relying on the Tailwind CLI. 
-
-Then, use a `global` style block to import in Tailwind postcss plugins (check out src/App.svelte) to bring in Tailwind!
-
-# Steps
-
-**Add Dependencies**
-
-`yarn add -D tailwindcss autoprefixer svelte-preprocess`
-
-**Setup rollup config**
-
-Check out the `rollup.config.js` for the full setup, but it's just plucked from the tailwindcss Getting Started walkthrough!
-
-**1. Add the following blocks into your rollup.config**
-```
-const preprocess = sveltePreprocess({
-  sourceMap: !production,
-  postcss: {
-    plugins: [
-      require("tailwindcss"),
-      require("autoprefixer"),
-    ],
-  },
-});
-```
-
-**2. Add `preprocess` into the `svelte` rollup plugin**
+Aplikasi ini bertujuan untuk memanagement obat masuk, keluar dan mendekati kadaluarsa
 
 
-```
-plugins: [
-  svelte({
-    ...
-    preprocess
-  })
-]
-```
+# Setup
 
-**3. Add a \<style global> block that references Tailwind**
+## Requirment
+Berikut beberapa aplikasi yang dibutuhkan untuk menjalankan aplikasi ini:
+1. [Node Js](https://nodejs.org/en/) 
+2. Mysql
 
-In this example, I've added this block to the `src/App.svelte` component.  
+## Teknolgi
+Dalam aplikasi ini menggunakan beberapa teknologi seperti
+- [Svelte](https://svelte.dev/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [ExpressJS](https://expressjs.com/)
 
-## **Important**
+## Installasi
+1. clone project dengan `git clone https://github.com/fbriansyah/apotek-app`
+2. masuk direktori app `cd apotek-app`
+3. install dependencies `npm install`
+4. jalankan aplikasi `npm run dev`
+5. Aplikasi berjalan di http://localhost:5000
 
-In an actual app, put this block in a file that will not change. Tailwind has relatively fast incremental builds, but the initial build goes through the entire 3mb+ worth of Tailwind CSS and is quite slow.
+# TODO
+## Frontend
+- Membuat halaman Login
+- Membuat halaman Obat
+- Update halaman Dashboard
 
-
-```css
-<style global>
-  /* purgecss start ignore */
-  @tailwind base;
-  @tailwind components;
-  /* purgecss end ignore */
-  @tailwind utilities;
-</style>
-```
-
-**4. Done!**
+## Backend
+- Setup server (ExpressJS, Mysql Driver)
+- CRUD Endpoint Obat
